@@ -51,3 +51,10 @@ FRONTEND_URL=http://localhost:3000
 VITE_API_BASE_URL=http://localhost:8000
 VITE_API_PREFIX=/api
 ```
+
+## แนวทางจัดการค่า ENV
+- สร้างไฟล์ `.env.example` พร้อม placeholder เพื่อช่วย onboarding แต่ห้ามบันทึกค่า secret จริง
+- Production ควรโหลดค่า ENV ผ่านระบบจัดการความลับ (เช่น AWS SSM, GCP Secret Manager) แล้ว inject ระหว่าง deploy
+- ทดสอบค่าที่ตั้งไว้ด้วย `php artisan config:cache` และ `php artisan config:show` บน staging ก่อนนำขึ้น production
+- หมุนเวียน secret สำคัญ (APP_KEY, DB_PASSWORD, tokens) อย่างน้อยปีละหนึ่งครั้ง หรือเมื่อเกิดเหตุ security incident
+- เก็บสเปรดชีต/CMDB สำหรับ ENV สำคัญพร้อมผู้รับผิดชอบ เพื่อให้ตรวจสอบการเปลี่ยนแปลงย้อนหลังได้
