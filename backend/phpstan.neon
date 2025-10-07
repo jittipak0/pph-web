@@ -1,0 +1,13 @@
+includes:
+  - vendor/larastan/larastan/extension.neon
+  - vendor/nesbot/carbon/extension.neon
+  - vendor/nunomaduro/larastan/extension.neon
+
+parameters:
+  paths:
+    - app/
+  level: 5
+  tmpDir: storage/framework/cache/phpstan
+  checkMissingIterableValueType: true
+  checkMissingIterableValueType: true
+  checkGenericClassInNonGenericObjectType: false
